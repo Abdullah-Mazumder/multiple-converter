@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Multiple Converter</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="header-title">Multiple Converter</h1>
+      <div class="divider"></div>
+      <div class="category-wrap">
+        <label class="lead" for="category-select">Select Category</label>
+        <select class="text-input" id="category-select">
+          <option value="mass">Mass</option>
+          <option value="length">Length</option>
+          <option value="area">Area</option>
+        </select>
+      </div>
+      <div class="input-group-wrap">
+        <div>
+          <input type="text" class="text-input" id="left-inp" />
+          <p id="left-p"></p>
+          <select class="text-input" name="" id="left-select">
+            <option value="km">Kilometer</option>
+            <option value="m">Meter</option>
+            <option value="centimeter">Centimeter</option>
+          </select>
+        </div>
+        <div class="equal">=</div>
+        <div>
+          <input type="text" class="text-input" id="right-inp" />
+          <p id="right-p"></p>
+          <select class="text-input" name="" id="right-select">
+            <option value="km">Kilometer</option>
+            <option value="m">Meter</option>
+            <option value="centimeter">Centimeter</option>
+          </select>
+        </div>
+      </div>
+      <div class="formula-wrap">
+        <h3>Formula</h3>
+        <p id="formula-text">Formula Text</p>
+      </div>
+    </div>
+  </body>
+  <script src="./main.js"></script>
+</html>

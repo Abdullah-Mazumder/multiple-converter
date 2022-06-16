@@ -1,0 +1,110 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 18px;
+}
+
+body {
+  background-color: #dfdeef;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  max-width: 400px;
+  height: max-content;
+  background-color: white;
+  overflow: hidden;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+.header-title {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #333333;
+  font-weight: 700;
+}
+
+.divider {
+  border-bottom: 1px solid #dfdeef;
+}
+
+input,
+select {
+  width: 100%;
+  border: 1px solid gray;
+  outline: none;
+  padding: 5px 3px;
+  margin: 4px 0;
+  overflow: auto;
+}
+
+.input-group-wrap {
+  overflow: auto;
+}
+
+.input-group-wrap p {
+  border: 1px solid gray;
+  padding: 3px 3px;
+  height: 35px;
+  background-color: #dddeee;
+}
+
+select option {
+  font-size: 16px;
+}
+
+.input-group-wrap div:nth-child(2) {
+  margin: 0 5px;
+}
+
+.lead {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #333333;
+  display: block;
+  user-select: none;
+}
+
+label {
+  user-select: none;
+}
+
+.category-wrap {
+  margin-top: 1rem;
+}
+
+.input-group-wrap {
+  display: flex;
+  gap: 1;
+  align-items: center;
+}
+
+.equal {
+  font-size: 1.3rem;
+}
+
+.formula-wrap {
+  margin-top: 1rem;
+  background-color: #dddeee;
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+.formula-wrap h3 {
+  color: #333333;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.formula-wrap p {
+  font-size: 0.9rem;
+  color: #666;
+  margin-top: 0.5rem;
+  line-height: 1rem;
+}
