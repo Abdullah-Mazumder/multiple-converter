@@ -562,25 +562,31 @@ const calculateValue = (obj) => {
         const variantKey = `${obj.rightSelect.value}:${obj.leftSelect.value}`;
         const variant = variants[variantKey];
         
+        console.log(scientificNumberGenerator(+rightInput.value.trim()))
         let result = variant.calculation(+rightInput.value.trim());
         const resultLength = result.toString().length;
 
-        if (!result) {
-            result = 0;
-        }
-
         if (resultLength >= 7) {
             result = result.toExponential(2);
-            leftPTag.innerHTML = scientificNumberGenerator((variant.calculation(+rightInput.value.trim())));;
+            leftPTag.innerHTML = scientificNumberGenerator(+variant.calculation(+rightInput.value.trim()));
         } else {
             leftPTag.innerHTML = result;
         }
 
         const rightInputValue = rightInput.value.toString();
         if (rightInputValue.length >= 7) {
-            rightPTag.innerHTML = scientificNumberGenerator(+toFixed(rightInput.value));
+            rightPTag.innerHTML = scientificNumberGenerator(+(rightInput.value.trim()));
         } else {
             rightPTag.innerHTML = rightInput.value;
+        }
+
+        if (!result || result === NaN) {
+            rightPTag.innerHTML = 0;
+            leftPTag.innerHTML = 0;
+        }
+
+        if (!result || result === NaN) {
+            result = 0;
         }
 
         leftInput.value = toFixed(result);
@@ -603,16 +609,25 @@ const rightSelectCalculateValue = (obj) => {
 
         if (resultLength >= 7) {
             result = result.toExponential(2);
-            rightPTag.innerHTML = scientificNumberGenerator((variant.calculation(+leftInput.value.trim())));
+            rightPTag.innerHTML = scientificNumberGenerator(variant.calculation(+leftInput.value.trim()));
         } else {
             rightPTag.innerHTML = result;
         }
 
         const leftInputValue = leftInput.value.toString();
         if (leftInputValue.length >= 7) {
-            leftPTag.innerHTML = scientificNumberGenerator(+toFixed(leftInput.value));
+            leftPTag.innerHTML = scientificNumberGenerator(+(leftInput.value));
         } else {
             leftPTag.innerHTML = leftInput.value;
+        }
+
+        if (!result || result === NaN) {
+            rightPTag.innerHTML = 0;
+            leftPTag.innerHTML = 0;
+        }
+
+        if (!result || result === NaN) {
+            result = 0;
         }
         
         rightInput.value = toFixed(result);
@@ -621,9 +636,32 @@ const rightSelectCalculateValue = (obj) => {
 }
 
 const scientificNumberGenerator = (n) => {
-    const number = Number(n);
-    if (!number) {
+    const leftPTag = document.getElementById('left-p');
+    const rightPTag = document.getElementById('right-p');
+    const leftInput = document.getElementById('left-inp');
+    const rightInput = document.getElementById('right-inp');
+    if (n == NaN || !n) {
         return 0;
+    }
+    const number = (n);
+    if (number.toExponential(2).toString() === 'Infinity' || number.toExponential(2).toString() === '-Infinity') {
+        if (number.toExponential(2).toString() === 'Infinity') {
+            leftPTag.innerText = 'Infinity';
+            rightPTag.innerText = 'Infinity';
+        } else if (number.toExponential(2).toString() === '-Infinity') {
+            leftPTag.innerText = '-Infinity';
+            rightPTag.innerText = '-Infinity';
+        }
+        leftInput.style.border = '2px solid red';
+        rightInput.style.border = '2px solid red';
+        leftPTag.style.border = '2px solid red';
+        rightPTag.style.border = '2px solid red';
+        return number.toExponential(2).toString();
+    } else {
+        leftInput.style.border = '1px solid gray';
+        rightInput.style.border = '1px solid gray';
+        leftPTag.style.border = '1px solid gray';
+        rightPTag.style.border = '1px solid gray';
     }
     const numberArray = number.toExponential(2).toString().split('e');
     let scientificNumber;
@@ -636,12 +674,18 @@ const scientificNumberGenerator = (n) => {
         });
         scientificNumber = `${numberArray[0]}&times;10<sup>${scientificNumberSecondPart}</sup>`;
     } else {
+        console.log('hello2', number.toExponential(2).toString())
         const arr = numberArray[1].split('-');
         arr.forEach((i) => {
             scientificNumberSecondPart += i;
         });
         scientificNumber = `${numberArray[0]}&times;10<sup>-${scientificNumberSecondPart}</sup>`;
     }
+
+    if (n == NaN || !n) {
+        scientificNumber = 0;
+    }
+
     return scientificNumber;
 }
 
