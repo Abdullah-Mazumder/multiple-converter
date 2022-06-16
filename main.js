@@ -645,13 +645,8 @@ const scientificNumberGenerator = (n) => {
     }
     const number = (n);
     if (number.toExponential(2).toString() === 'Infinity' || number.toExponential(2).toString() === '-Infinity') {
-        if (number.toExponential(2).toString() === 'Infinity') {
-            leftPTag.innerText = 'Infinity';
-            rightPTag.innerText = 'Infinity';
-        } else if (number.toExponential(2).toString() === '-Infinity') {
-            leftPTag.innerText = '-Infinity';
-            rightPTag.innerText = '-Infinity';
-        }
+        leftPTag.innerText = number.toExponential(2).toString();
+        rightPTag.innerText = number.toExponential(2).toString();
         leftInput.style.border = '2px solid red';
         rightInput.style.border = '2px solid red';
         leftPTag.style.border = '2px solid red';
