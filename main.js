@@ -562,7 +562,6 @@ const calculateValue = (obj) => {
         const variantKey = `${obj.rightSelect.value}:${obj.leftSelect.value}`;
         const variant = variants[variantKey];
         
-        console.log(scientificNumberGenerator(+rightInput.value.trim()))
         let result = variant.calculation(+rightInput.value.trim());
         const resultLength = result.toString().length;
 
@@ -581,8 +580,11 @@ const calculateValue = (obj) => {
         }
 
         if (!result || result === NaN) {
+            rightInput.style.border = '1px solid red';
             rightPTag.innerHTML = 0;
             leftPTag.innerHTML = 0;
+        } else {
+            rightInput.style.border = '1px solid gray';
         }
 
         if (!result || result === NaN) {
@@ -622,8 +624,11 @@ const rightSelectCalculateValue = (obj) => {
         }
 
         if (!result || result === NaN) {
+            leftInput.style.border = '1px solid red';
             rightPTag.innerHTML = 0;
             leftPTag.innerHTML = 0;
+        } else {
+            leftInput.style.border = '1px solid gray'
         }
 
         if (!result || result === NaN) {
